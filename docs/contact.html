@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 小泉しんぺい 公式サイト</title>
+    <meta name="description" content="小泉しんぺいへのお問い合わせ。お気軽にご連絡ください。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ─── お問い合わせフォーム固有スタイル ─── */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: flex-start; }
+        .contact-side-image { border-radius: var(--radius); box-shadow: var(--shadow); max-width: 100%; }
+        .contact-info-card {
+            background: var(--bg-green-light);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-top: 32px;
+        }
+        .contact-info-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--primary-dark); }
+        .contact-info-row {
+            display: flex; align-items: center; gap: 12px;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text-mid);
+        }
+        .contact-info-icon { font-size: 20px; }
+
+        .form-group { margin-bottom: 24px; }
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+        .form-label .required {
+            display: inline-block;
+            background: #e53935;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 50px;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color .3s;
+            background: #fff;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .form-input.error, .form-textarea.error { border-color: #e53935; }
+        .form-textarea { min-height: 160px; resize: vertical; }
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            cursor: pointer;
+        }
+
+        .form-submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all .3s;
+            letter-spacing: .05em;
+        }
+        .form-submit-btn:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+        .form-submit-btn:disabled { background: #BDBDBD; cursor: not-allowed; transform: none; }
+
+        .form-message {
+            display: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 16px;
+            text-align: center;
+        }
+        .form-message.success { display: block; background: #E8F5E9; color: var(--primary-dark); }
+        .form-message.error-msg { display: block; background: #FFEBEE; color: #c62828; }
+
+        /* ─── SNSフォロー ─── */
+        .social-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .social-card {
+            display: flex; flex-direction: column; align-items: center;
+            background: #fff; padding: 28px 36px;
+            border-radius: var(--radius); box-shadow: var(--shadow);
+            transition: transform .3s, box-shadow .3s;
+            min-width: 140px;
+        }
+        .social-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .social-card-icon { font-size: 32px; margin-bottom: 8px; }
+        .social-card-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-side { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ ヘッダー ═══ -->
+<header class="header" id="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">小泉しんぺい</a>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="nav" id="nav">
+            <a href="index.html" class="nav-link">ホーム</a>
+            <a href="profile.html" class="nav-link">プロフィール</a>
+            <a href="policy.html" class="nav-link">政治姿勢 &amp; News</a>
+            <a href="contact.html" class="nav-link active">お問い合わせ</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ═══ ページヒーロー ═══ -->
+<section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('images/hero_bg_park.jpg')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+        <h1 class="page-hero-title fade-up">お問い合わせ</h1>
+        <p class="page-hero-sub fade-up delay-1">お気軽にご連絡ください</p>
+    </div>
+</section>
+
+<!-- ═══ お問い合わせフォーム ═══ -->
+<section class="section section-white">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-side reveal-left">
+                <img src="images/hero_smile.png" alt="小泉しんぺい" class="contact-side-image">
+                <div class="contact-info-card">
+                    <p class="contact-info-title">その他のお問い合わせ方法</p>
+                    <div class="contact-info-row">
+                        <span class="contact-info-icon">📧</span>
+                        <span>info@koizumi-shinpei.example.com</span>
+                    </div>
+                    <div class="contact-info-row">
+                        <span class="contact-info-icon">𝕏</span>
+                        <span>@koizumi_shinpei</span>
+                    </div>
+                    <div class="contact-info-row">
+                        <span class="contact-info-icon">📷</span>
+                        <span>@koizumi_shinpei</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrapper reveal-right">
+                <h2 class="section-title">メッセージを送る</h2>
+                <p class="section-text" style="margin-bottom:32px;">ご質問・ご意見・応援メッセージなど、なんでもお気軽にどうぞ。</p>
+
+                <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label class="form-label">お名前 <span class="required">必須</span></label>
+                        <input type="text" name="name" class="form-input" placeholder="山田 太郎" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">メールアドレス <span class="required">必須</span></label>
+                        <input type="email" name="email" class="form-input" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">お問い合わせ種別</label>
+                        <select name="category" class="form-select">
+                            <option value="">選択してください</option>
+                            <option value="message">メッセージ・応援</option>
+                            <option value="question">ご質問</option>
+                            <option value="volunteer">活動への参加希望</option>
+                            <option value="media">取材・メディア関連</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">メッセージ <span class="required">必須</span></label>
+                        <textarea name="message" class="form-textarea" placeholder="お気軽にメッセージをお書きください" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit-btn" id="submitBtn">送信する</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SNSフォロー ═══ -->
+<section class="section section-green-light">
+    <div class="container center">
+        <h2 class="section-title center">SNSで最新情報をチェック</h2>
+        <div class="social-grid">
+            <a href="https://twitter.com/koizumi_shinpei" target="_blank" rel="noopener" class="social-card reveal-up">
+                <span class="social-card-icon">𝕏</span>
+                <span class="social-card-name">X (Twitter)</span>
+            </a>
+            <a href="https://instagram.com/koizumi_shinpei" target="_blank" rel="noopener" class="social-card reveal-up delay-1">
+                <span class="social-card-icon">📷</span>
+                <span class="social-card-name">Instagram</span>
+            </a>
+            <a href="https://facebook.com/koizumi.shinpei" target="_blank" rel="noopener" class="social-card reveal-up delay-2">
+                <span class="social-card-icon">📘</span>
+                <span class="social-card-name">Facebook</span>
+            </a>
+            <a href="https://note.com/koizumi_shinpei" target="_blank" rel="noopener" class="social-card reveal-up delay-3">
+                <span class="social-card-icon">📝</span>
+                <span class="social-card-name">note</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ フッター ═══ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <p class="footer-name">小泉しんぺい</p>
+                <p class="footer-catch">あなたの声を、まちの力に。</p>
+            </div>
+            <div class="footer-nav">
+                <a href="index.html">ホーム</a>
+                <a href="profile.html">プロフィール</a>
+                <a href="policy.html">政治姿勢 &amp; News</a>
+                <a href="contact.html">お問い合わせ</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://twitter.com/koizumi_shinpei" target="_blank" rel="noopener" aria-label="X">𝕏</a>
+                <a href="https://instagram.com/koizumi_shinpei" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+                <a href="https://facebook.com/koizumi.shinpei" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+                <a href="https://note.com/koizumi_shinpei" target="_blank" rel="noopener" aria-label="note">📝</a>
+            </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 小泉しんぺい All Rights Reserved.</p>
+    </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="ページトップへ">↑</button>
+<script src="main.js"></script>
+<script>
+// ─── フォーム送信処理 ─────────────────────────
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMessage');
+    const inputs = form.querySelectorAll('.form-input, .form-textarea');
+
+    // エラー表示リセット
+    inputs.forEach(i => i.classList.remove('error'));
+    msg.className = 'form-message';
+    msg.style.display = 'none';
+
+    // バリデーション
+    let valid = true;
+    inputs.forEach(input => {
+        if (input.required && !input.value.trim()) {
+            input.classList.add('error');
+            valid = false;
+        }
+    });
+    const email = form.querySelector('[name="email"]');
+    if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('error');
+        valid = false;
+    }
+    if (!valid) {
+        msg.textContent = '入力内容をご確認ください。';
+        msg.className = 'form-message error-msg';
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            msg.textContent = 'お問い合わせありがとうございます。メッセージを受け付けました。';
+            msg.className = 'form-message success';
+            form.reset();
+        } else {
+            throw new Error('送信に失敗しました');
+        }
+    } catch (error) {
+        msg.textContent = '送信に失敗しました。しばらくしてから再度お試しください。';
+        msg.className = 'form-message error-msg';
+    } finally {
+        btn.disabled = false;
+        btn.textContent = '送信する';
+    }
+});
+</script>
+</body>
+</html>

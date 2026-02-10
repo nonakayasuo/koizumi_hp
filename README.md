@@ -1,45 +1,125 @@
-# Git Integration & Wix CLI <img align="left" src="https://user-images.githubusercontent.com/89579857/185785022-cab37bf5-26be-4f11-85f0-1fac63c07d3b.png">
+# 小泉しんぺい 公式サイト
 
-This repo is part of Git Integration & Wix CLI, a set of tools that allows you to write, test, and publish code for your Wix site locally on your computer. 
+あなたの声を、まちの力に。
 
-Connect your site to GitHub, develop in your favorite IDE, test your code in real time, and publish your site from the command line.
+## 🌐 サイトURL
 
-## Set up this repository in your IDE
-This repo is connected to a Wix site. That site tracks this repo's default branch. Any code committed and pushed to that branch from your local IDE appears on the site.
+- **GitHub Pages**: https://nonakayasuo.github.io/koizumi_hp/
+- **独自ドメイン設定後**: https://koizumi-shinpei.com （例）
 
-Before getting started, make sure you have the following things installed:
-* [Git](https://git-scm.com/download)
-* [Node](https://nodejs.org/en/download/), version 14.8 or later.
-* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://yarnpkg.com/getting-started/install)
-* An SSH key [added to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+## 📁 プロジェクト構成
 
-To set up your local environment and start coding locally, do the following:
+```
+koizumi_hp/
+├── docs/               # 公開サイト本体（GitHub Pagesで公開）
+│   ├── index.html     # ホーム
+│   ├── profile.html   # プロフィール
+│   ├── policy.html    # 政治姿勢＆News
+│   ├── contact.html   # お問い合わせ
+│   ├── style.css      # 共通スタイル
+│   ├── main.js        # 共通JavaScript
+│   └── images/        # 画像フォルダ
+└── README.md          # このファイル
+```
 
-1. Open your terminal and navigate to where you want to store the repo.
-1. Clone the repo by running `git clone <your-repository-url>`.
-1. Navigate to the repo's directory by running `cd <directory-name>`.
-1. Install the repo's dependencies by running `npm install` or `yarn install`.
-1. Install the Wix CLI by running `npm install -g @wix/cli` or `yarn global add @wix/cli`.  
-   Once you've installed the CLI globally, you can use it with any Wix site's repo.
+## 🚀 ローカル開発
 
-For more information, see [Setting up Git Integration & Wix CLI](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-beta).
+```bash
+# ローカルサーバー起動
+cd docs
+python3 -m http.server 8080
 
-## Write Velo code in your IDE
-Once your repo is set up, you can write code in it as you would in any other non-Wix project. The repo's file structure matches the [public](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#public), [backend](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#backend), and [page code](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#page-code) sections in Editor X.
+# ブラウザで開く
+open http://localhost:8080
+```
 
-Learn more about [this repo's file structure](https://support.wix.com/en/article/velo-understanding-your-sites-github-repository-beta).
+## 📦 デプロイ（GitHub Pages）
 
-## Test your code with the Local Editor
-The Local Editor allows you test changes made to your site in real time. The code in your local IDE is synced with the Local Editor, so you can test your changes before committing them to your repo. You can also change the site design in the Local Editor and sync it with your IDE.
+1. GitHubにプッシュ
+```bash
+git add .
+git commit -m "Update site"
+git push origin main
+```
 
-Start the Local Editor by navigating to this repo's directory in your terminal and running `wix dev`.
+2. GitHubリポジトリ → **Settings** → **Pages**
+3. **Source**: `Deploy from a branch`
+4. **Branch**: `main` / フォルダ: `/docs`
+5. **Save** → 数分後に公開完了
 
-For more information, see [Working with the Local Editor](https://support.wix.com/en/article/velo-working-with-the-local-editor-beta).
+## 🌍 独自ドメイン設定
 
-## Preview and publish with the Wix CLI
-The Wix CLI is a tool that allows you to work with your site locally from your computer's terminal. You can use it to build a preview version of your site and publish it. You can also use the CLI to install [approved npm packages](https://support.wix.com/en/article/velo-working-with-npm-packages) to your site.
+### 1. ドメイン取得（お名前.com / ムームードメインなど）
+- 例: `koizumi-shinpei.com`
 
-Learn more about [working with the Wix CLI](https://support.wix.com/en/article/velo-working-with-the-wix-cli-beta).
+### 2. DNS設定（ドメイン管理画面）
 
-## Invite contributors to work with you
-Git Integration & Wix CLI extends Editor X's [concurrent editing](https://support.wix.com/en/article/editor-x-about-concurrent-editing) capabilities. Invite other developers as collaborators on your [site](https://support.wix.com/en/article/inviting-people-to-contribute-to-your-site) and your [GitHub repo](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository). Multiple developers can work on a site's code at once.
+**Aレコード**を追加:
+```
+ホスト名: @
+値: 185.199.108.153
+値: 185.199.109.153
+値: 185.199.110.153
+値: 185.199.111.153
+```
+
+**CNAMEレコード**を追加:
+```
+ホスト名: www
+値: nonakayasuo.github.io
+```
+
+### 3. GitHub Pages設定
+
+1. リポジトリ → **Settings** → **Pages**
+2. **Custom domain** に `koizumi-shinpei.com` を入力
+3. **Enforce HTTPS** にチェック
+4. 数時間〜24時間で反映
+
+### 4. `docs/CNAME` ファイルを作成
+
+```bash
+echo "koizumi-shinpei.com" > docs/CNAME
+git add docs/CNAME
+git commit -m "Add custom domain"
+git push
+```
+
+## 📧 お問い合わせフォーム設定
+
+現在、`contact.html` のフォームは **Formspree** を使用する設定になっています。
+
+1. [Formspree](https://formspree.io/) にアクセス
+2. 無料アカウント作成
+3. フォームを作成して **Form ID** を取得
+4. `docs/contact.html` の以下を書き換え:
+```html
+<form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+```
+↓
+```html
+<form id="contactForm" action="https://formspree.io/f/実際のフォームID" method="POST">
+```
+
+## 📝 コンテンツ更新
+
+- **お知らせ追加**: `index.html`, `policy.html` の `.news-list` セクションを編集
+- **政策内容変更**: `policy.html` の `.policy-card` セクションを編集
+- **プロフィール更新**: `profile.html` を編集
+- **SNSリンク変更**: 各HTMLファイルの `.footer-social` セクションを編集
+
+## 🎨 デザインカスタマイズ
+
+`docs/style.css` の以下を変更:
+
+```css
+:root {
+    --primary: #2E7D32;        /* メインカラー */
+    --primary-light: #4CAF50;  /* ライトカラー */
+    --accent: #F9A825;         /* アクセントカラー */
+}
+```
+
+## 📄 ライセンス
+
+© 2026 小泉しんぺい All Rights Reserved.

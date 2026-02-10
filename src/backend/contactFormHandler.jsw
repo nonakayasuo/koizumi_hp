@@ -1,0 +1,94 @@
+// ============================================================
+// contactFormHandler.jsw - お問い合わせフォーム バックエンド処理
+// ============================================================
+// 【設置場所】Wix エディタ → Backend フォルダ → contactFormHandler.jsw
+//
+// .jsw 拡張子にすることで、フロントエンドから呼び出し可能な
+// バックエンド関数として機能します。
+// ============================================================
+
+import wixData from 'wix-data';
+
+/**
+ * お問い合わせフォームの送信を処理する
+ * @param {Object} formData - フォームデータ
+ * @param {string} formData.name - お名前
+ * @param {string} formData.email - メールアドレス
+ * @param {string} formData.category - お問い合わせ種別
+ * @param {string} formData.message - メッセージ本文
+ * @returns {Promise<Object>} 処理結果
+ */
+export async function submitContactForm(formData) {
+    try {
+        // データのサニタイズ
+        const sanitizedData = {
+            name: sanitize(formData.name),
+            email: sanitize(formData.email),
+            category: sanitize(formData.category),
+            message: sanitize(formData.message),
+            submittedAt: new Date(),
+            status: 'new',  // new, read, replied
+            ipAddress: '',   // プライバシー考慮で保存しない
+        };
+
+        // バリデーション（サーバーサイド）
+        const validation = validateFormData(sanitizedData);
+        if (!validation.isValid) {
+            return {
+                success: false,
+                error: validation.message
+            };
+        }
+
+        // Wix Data コレクションに保存
+        const result = await wixData.insert('ContactSubmissions', sanitizedData);
+
+        return {
+            success: true,
+            message: 'お問い合わせありがとうございます。メッセージを受け付けました。',
+            id: result._id
+        };
+    } catch (error) {
+        console.error('お問い合わせ送信エラー:', error);
+        return {
+            success: false,
+            error: '送信に失敗しました。しばらくしてから再度お試しください。'
+        };
+    }
+}
+
+/**
+ * 入力データのサニタイズ
+ */
+function sanitize(input) {
+    if (typeof input !== 'string') return '';
+    return input.trim().replace(/<[^>]*>/g, '');
+}
+
+/**
+ * フォームデータのバリデーション
+ */
+function validateFormData(data) {
+    if (!data.name || data.name.length < 1) {
+        return { isValid: false, message: 'お名前を入力してください。' };
+    }
+
+    if (!data.email) {
+        return { isValid: false, message: 'メールアドレスを入力してください。' };
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+        return { isValid: false, message: '正しいメールアドレスを入力してください。' };
+    }
+
+    if (!data.message || data.message.length < 5) {
+        return { isValid: false, message: 'メッセージを入力してください（5文字以上）。' };
+    }
+
+    if (data.message.length > 5000) {
+        return { isValid: false, message: 'メッセージは5000文字以内で入力してください。' };
+    }
+
+    return { isValid: true };
+}

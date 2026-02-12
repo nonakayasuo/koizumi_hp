@@ -317,6 +317,87 @@ a:hover { opacity: .8; }
     box-shadow: 0 12px 24px rgba(0,0,0,0.15);
 }
 
+/* ─── 動画ギャラリー ──────────────────────── */
+.video-section-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+    color: var(--text-light);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.video-featured {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.video-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+.video-card video {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    background: #000;
+}
+
+.video-card-info {
+    padding: 16px 20px;
+}
+
+.video-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.video-card-desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.video-card-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.badge-music {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    color: #2e7d32;
+}
+
+.badge-activity {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    color: #e65100;
+}
+
 /* ─── レスポンシブ対応 ──────────────────────── */
 @media (max-width: 768px) {
     .hero-message-title {
@@ -966,6 +1047,10 @@ a:hover { opacity: .8; }
     .policy-number { font-size: 28px; }
 
     .news-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+    .video-grid { grid-template-columns: 1fr; }
+    .video-featured { grid-template-columns: 1fr; }
+    .video-card video { height: 240px; }
 
     .footer-inner { flex-direction: column; text-align: center; align-items: center; }
     .footer-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }

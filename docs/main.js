@@ -6,19 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── ハンバーガーメニュー ───────────────────────
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
+    const headerRight = nav ? nav.parentElement : null;
 
-    if (hamburger && nav) {
+    if (hamburger && headerRight) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            nav.classList.toggle('open');
+            headerRight.classList.toggle('open');
         });
         // メニューリンククリックで閉じる
-        nav.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                nav.classList.remove('open');
+        if (nav) {
+            nav.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    headerRight.classList.remove('open');
+                });
             });
-        });
+        }
     }
 
     // ─── スクロールトップボタン ─────────────────────

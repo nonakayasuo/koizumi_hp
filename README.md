@@ -4,8 +4,8 @@
 
 ## 🌐 サイトURL
 
-- **GitHub Pages**: https://nonakayasuo.github.io/koizumi_hp/
-- **独自ドメイン設定後**: https://koizumi-shinpei.com （例）
+- **GitHub Pages**: <https://nonakayasuo.github.io/koizumi_hp/>
+- **独自ドメイン設定後**: <https://koizumi-shinpei.com> （例）
 
 ## 📁 プロジェクト構成
 
@@ -36,25 +36,28 @@ open http://localhost:8080
 ## 📦 デプロイ（GitHub Pages）
 
 1. GitHubにプッシュ
+
 ```bash
 git add .
 git commit -m "Update site"
 git push origin main
 ```
 
-2. GitHubリポジトリ → **Settings** → **Pages**
-3. **Source**: `Deploy from a branch`
-4. **Branch**: `main` / フォルダ: `/docs`
-5. **Save** → 数分後に公開完了
+1. GitHubリポジトリ → **Settings** → **Pages**
+2. **Source**: `Deploy from a branch`
+3. **Branch**: `main` / フォルダ: `/docs`
+4. **Save** → 数分後に公開完了
 
 ## 🌍 独自ドメイン設定
 
 ### 1. ドメイン取得（お名前.com / ムームードメインなど）
+
 - 例: `koizumi-shinpei.com`
 
 ### 2. DNS設定（ドメイン管理画面）
 
 **Aレコード**を追加:
+
 ```
 ホスト名: @
 値: 185.199.108.153
@@ -64,6 +67,7 @@ git push origin main
 ```
 
 **CNAMEレコード**を追加:
+
 ```
 ホスト名: www
 値: nonakayasuo.github.io
@@ -93,10 +97,13 @@ git push
 2. 無料アカウント作成
 3. フォームを作成して **Form ID** を取得
 4. `docs/contact.html` の以下を書き換え:
+
 ```html
 <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 ```
+
 ↓
+
 ```html
 <form id="contactForm" action="https://formspree.io/f/実際のフォームID" method="POST">
 ```

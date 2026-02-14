@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ | 小泉しんぺい | 多摩市 活動報告</title>
+    <meta name="description" content="小泉しんぺいの活動報告ブログ。日々の活動や地域での取り組み、政治への想いを発信しています。">
+    <meta name="keywords" content="小泉しんぺい,多摩市,ブログ,活動報告,地域活動,市政">
+    <link rel="canonical" href="https://koizumi-shimpei.com/blog.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://koizumi-shimpei.com/blog.html">
+    <meta property="og:title" content="ブログ | 小泉しんぺい">
+    <meta property="og:description" content="小泉しんぺいの活動報告ブログ。日々の活動や地域での取り組みを発信しています。">
+    <meta property="og:image" content="https://koizumi-shimpei.com/images/hero_smile.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ブログ | 小泉しんぺい">
+    <meta name="twitter:description" content="小泉しんぺいの活動報告ブログ。日々の活動や地域での取り組みを発信しています。">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: var(--bg-light);
+        }
+        
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-card-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .blog-card-badge {
+            background: var(--primary-light);
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .blog-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .blog-card-excerpt {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+        
+        .blog-card-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .blog-card-read-more {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .blog-card:hover .blog-card-read-more {
+            color: var(--primary-dark);
+        }
+        
+        /* ピン留めスタイル */
+        .blog-card-pinned {
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(249, 168, 37, 0.2);
+            position: relative;
+        }
+        
+        .blog-card-pinned:hover {
+            box-shadow: 0 8px 24px rgba(249, 168, 37, 0.3);
+        }
+        
+        .blog-card-pin-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ ヘッダー ═══ -->
+<header class="header" id="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">小泉しんぺい</a>
+        <div class="header-right">
+            <nav class="nav" id="nav">
+                <a href="index.html" class="nav-link">ホーム</a>
+                <a href="profile.html" class="nav-link">プロフィール</a>
+                <a href="policy.html" class="nav-link">政治姿勢</a>
+                <a href="blog.html" class="nav-link active">ブログ</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <div class="header-social">
+                <a href="https://x.com/koizumi_tama" target="_blank" rel="noopener" aria-label="X" class="header-social-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/koizumi_tama/" target="_blank" rel="noopener" aria-label="Instagram" class="header-social-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ═══ ページヒーロー ═══ -->
+<section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('images/hero_bg_park.jpg')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+        <h1 class="page-hero-title fade-up">ブログ</h1>
+        <p class="page-hero-sub fade-up delay-1">日々の活動や想いを発信しています</p>
+    </div>
+</section>
+
+<!-- ═══ ブログ記事一覧 ═══ -->
+<section class="section section-white">
+    <div class="container">
+        <div class="blog-grid">
+            
+            <!-- 2023年4月28日 - ピン留め -->
+            <a href="blog-20260212.html" class="blog-card blog-card-pinned reveal-up">
+                <div class="blog-card-pin-badge">📌 ピン留め</div>
+                <div class="blog-card-image">
+                    <img src="images/hero_smile.png" alt="選挙が終わって" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2023.04.28</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">選挙が終わって・・・</h3>
+                    <p class="blog-card-excerpt">選挙活動を終えて、これからの活動について考えていることをお伝えします。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 2026年1月25日 -->
+            <a href="blog-20250125.html" class="blog-card reveal-up delay-1">
+                <div class="blog-card-image">
+                    <img src="images/self_driving_bus.jpg" alt="自動運転バス" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2026.01.25</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">自動運転バスに乗車しました</h3>
+                    <p class="blog-card-excerpt">運転手不足への対策としての実証実験に参加しました。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 2026年1月11日 -->
+            <a href="blog-20250111.html" class="blog-card reveal-up delay-2">
+                <div class="blog-card-image">
+                    <img src="images/venezuela.jpg" alt="ベネズエラ軍事介入反対" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2026.01.11</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">ベネズエラ軍事介入反対</h3>
+                    <p class="blog-card-excerpt">トランプ政権のやり方にNO！街頭での呼びかけを行いました。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 2023年4月22日 -->
+            <a href="blog-20230422.html" class="blog-card reveal-up">
+                <div class="blog-card-image">
+                    <img src="images/hero_smile.png" alt="選挙活動終了" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2023.04.22</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">選挙活動が終わりました！</h3>
+                    <p class="blog-card-excerpt">選挙活動を終えて、皆様への感謝の気持ちをお伝えします。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 2023年4月19日 -->
+            <a href="blog-20230419.html" class="blog-card reveal-up delay-1">
+                <div class="blog-card-image">
+                    <img src="images/hero_smile.png" alt="選挙折り返し" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2023.04.19</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">多摩市議選、折り返し地点です！</h3>
+                    <p class="blog-card-excerpt">選挙活動の折り返し地点での状況と想いをお伝えします。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 2023年4月13日 -->
+            <a href="blog-20230413.html" class="blog-card reveal-up delay-2">
+                <div class="blog-card-image">
+                    <img src="images/hero_smile.png" alt="政党の公認について" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2023.04.13</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">政党の公認について</h3>
+                    <p class="blog-card-excerpt">政党の公認に関する考え方についてお話しします。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 2023年4月11日 -->
+            <a href="blog-20230411.html" class="blog-card reveal-up">
+                <div class="blog-card-image">
+                    <img src="images/hero_smile.png" alt="公費負担制度" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2023.04.11</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">フシギな公費負担制度の限度額</h3>
+                    <p class="blog-card-excerpt">選挙における公費負担制度について考察します。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 2023年4月5日 -->
+            <a href="blog-20230405.html" class="blog-card reveal-up delay-1">
+                <div class="blog-card-image">
+                    <img src="images/bread_baking_class.jpg" alt="パン教室" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2023.04.05</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">昨年行ったパン教室について</h3>
+                    <p class="blog-card-excerpt">地域の皆様と一緒に行ったパン教室の様子をご紹介します。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 2023年4月3日 -->
+            <a href="blog-20230403.html" class="blog-card reveal-up delay-2">
+                <div class="blog-card-image">
+                    <img src="images/hero_smile.png" alt="初ブログ" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2023.04.03</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">初ブログ！</h3>
+                    <p class="blog-card-excerpt">はじめてのブログ投稿です。これからよろしくお願いします。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="section section-cta">
+    <div class="container center">
+        <h2 class="cta-title reveal-up">あなたの声を聴かせてください</h2>
+        <p class="cta-text reveal-up delay-1">政治や地域のこと、お気軽にお話しください。<br>一緒に、もっと良いまちをつくりましょう。</p>
+        <div class="cta-buttons reveal-up delay-2">
+            <a href="contact.html" class="btn btn-white">お問い合わせ</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ フッター ═══ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <p class="footer-name">小泉しんぺい</p>
+                <p class="footer-catch">あなたの声を、まちの力に。</p>
+                <p class="footer-contact">
+                    📞 TEL: 070-8395-2430<br>
+                    📧 E-mail: puyon.kobukuro@gmail.com<br>
+                    📍 多摩市諏訪4-18-10
+                </p>
+            </div>
+            <div class="footer-nav">
+                <a href="index.html">ホーム</a>
+                <a href="profile.html">プロフィール</a>
+                <a href="policy.html">政治姿勢</a>
+                <a href="blog.html">ブログ</a>
+                <a href="contact.html">お問い合わせ</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://x.com/koizumi_tama" target="_blank" rel="noopener" aria-label="X">𝕏</a>
+                <a href="https://www.instagram.com/koizumi_tama/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 小泉しんぺい All Rights Reserved.</p>
+    </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="ページトップへ">↑</button>
+<script src="main.js"></script>
+</body>
+</html>

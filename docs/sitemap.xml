@@ -25,6 +25,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://koizumi-shinpei.com/blog-20251018.html</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://koizumi-shinpei.com/blog-20250726.html</loc>
+    <lastmod>2025-07-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://koizumi-shinpei.com/blog-20250322.html</loc>
+    <lastmod>2025-03-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://koizumi-shinpei.com/blog-20260212.html</loc>
     <lastmod>2023-04-28</lastmod>
     <changefreq>yearly</changefreq>

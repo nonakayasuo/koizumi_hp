@@ -128,6 +128,40 @@
             color: var(--primary-dark);
         }
         
+        /* ソートコントロール */
+        .blog-sort-control {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .sort-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .sort-btn {
+            padding: 0.4rem 1.1rem;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .sort-btn:hover {
+            background: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+        .sort-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
         /* ピン留めスタイル */
         .blog-card-pinned {
             border: 2px solid var(--accent);
@@ -207,10 +241,18 @@
 <!-- ═══ ブログ記事一覧 ═══ -->
 <section class="section section-white">
     <div class="container">
-        <div class="blog-grid">
-            
-            <!-- 2023年4月28日 - ピン留め -->
-            <a href="blog-20260212.html" class="blog-card blog-card-pinned reveal-up">
+
+        <!-- ソートコントロール -->
+        <div class="blog-sort-control">
+            <span class="sort-label">並び替え：</span>
+            <button class="sort-btn active" id="sortNew" onclick="sortBlog('new')">新しい順</button>
+            <button class="sort-btn" id="sortOld" onclick="sortBlog('old')">古い順</button>
+        </div>
+
+        <div class="blog-grid" id="blogGrid">
+
+            <!-- ピン留め（常に先頭） -->
+            <a href="blog-20260212.html" class="blog-card blog-card-pinned reveal-up" data-date="20230428" data-pinned="true">
                 <div class="blog-card-pin-badge">📌 ピン留め</div>
                 <div class="blog-card-image">
                     <img src="images/hero_smile.png" alt="選挙が終わって" loading="lazy">
@@ -227,9 +269,9 @@
                     </div>
                 </div>
             </a>
-            
+
             <!-- 2026年1月25日 -->
-            <a href="blog-20250125.html" class="blog-card reveal-up delay-1">
+            <a href="blog-20250125.html" class="blog-card reveal-up" data-date="20260125">
                 <div class="blog-card-image">
                     <img src="images/self_driving_bus.jpg" alt="自動運転バス" loading="lazy">
                 </div>
@@ -245,9 +287,9 @@
                     </div>
                 </div>
             </a>
-            
+
             <!-- 2026年1月11日 -->
-            <a href="blog-20250111.html" class="blog-card reveal-up delay-2">
+            <a href="blog-20250111.html" class="blog-card reveal-up" data-date="20260111">
                 <div class="blog-card-image">
                     <img src="images/venezuela.jpg" alt="ベネズエラ軍事介入反対" loading="lazy">
                 </div>
@@ -263,9 +305,63 @@
                     </div>
                 </div>
             </a>
-            
+
+            <!-- 2025年10月18日 -->
+            <a href="blog-20251018.html" class="blog-card reveal-up" data-date="20251018">
+                <div class="blog-card-image">
+                    <img src="images/piccolo_autumn_festival.png" alt="秋まつり吹奏楽演奏" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2025.10.18</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">社会福祉法人の秋まつりにて</h3>
+                    <p class="blog-card-excerpt">町田の生活介護事業所の秋まつりで、ユニオンブラスさんの賛助として吹奏楽演奏に参加しました。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 2025年7月26日 -->
+            <a href="blog-20250726.html" class="blog-card reveal-up" data-date="20250726">
+                <div class="blog-card-image">
+                    <img src="images/bukatsu_gym_practice.png" alt="聖ヶ丘中学校吹奏楽部練習" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2025.07.26</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">初めての部活動指導員</h3>
+                    <p class="blog-card-excerpt">聖ヶ丘中学校吹奏楽部のコンクール前練習を外部指導員として見学。懐かしの曲「センチュリア」と再会しました。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 2025年3月22日 -->
+            <a href="blog-20250322.html" class="blog-card reveal-up" data-date="20250322">
+                <div class="blog-card-image">
+                    <img src="images/hayashi_wakuwaku_performance.png" alt="馬引沢はやし連 わくわくフェスタ演奏" loading="lazy">
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 2025.03.22</span>
+                        <span class="blog-card-badge">活動報告</span>
+                    </div>
+                    <h3 class="blog-card-title">諏訪児童館わくわくフェスタ</h3>
+                    <p class="blog-card-excerpt">馬引沢はやし連として諏訪児童館わくわくフェスタのオープニングを演奏。地域密着型のイベントに初めて参加しました。</p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-read-more">続きを読む →</span>
+                    </div>
+                </div>
+            </a>
+
             <!-- 2023年4月22日 -->
-            <a href="blog-20230422.html" class="blog-card reveal-up">
+            <a href="blog-20230422.html" class="blog-card reveal-up" data-date="20230422">
                 <div class="blog-card-image">
                     <img src="images/hero_smile.png" alt="選挙活動終了" loading="lazy">
                 </div>
@@ -281,9 +377,9 @@
                     </div>
                 </div>
             </a>
-            
+
             <!-- 2023年4月19日 -->
-            <a href="blog-20230419.html" class="blog-card reveal-up delay-1">
+            <a href="blog-20230419.html" class="blog-card reveal-up" data-date="20230419">
                 <div class="blog-card-image">
                     <img src="images/hero_smile.png" alt="選挙折り返し" loading="lazy">
                 </div>
@@ -299,9 +395,9 @@
                     </div>
                 </div>
             </a>
-            
+
             <!-- 2023年4月13日 -->
-            <a href="blog-20230413.html" class="blog-card reveal-up delay-2">
+            <a href="blog-20230413.html" class="blog-card reveal-up" data-date="20230413">
                 <div class="blog-card-image">
                     <img src="images/hero_smile.png" alt="政党の公認について" loading="lazy">
                 </div>
@@ -317,9 +413,9 @@
                     </div>
                 </div>
             </a>
-            
+
             <!-- 2023年4月11日 -->
-            <a href="blog-20230411.html" class="blog-card reveal-up">
+            <a href="blog-20230411.html" class="blog-card reveal-up" data-date="20230411">
                 <div class="blog-card-image">
                     <img src="images/hero_smile.png" alt="公費負担制度" loading="lazy">
                 </div>
@@ -335,9 +431,9 @@
                     </div>
                 </div>
             </a>
-            
+
             <!-- 2023年4月5日 -->
-            <a href="blog-20230405.html" class="blog-card reveal-up delay-1">
+            <a href="blog-20230405.html" class="blog-card reveal-up" data-date="20230405">
                 <div class="blog-card-image">
                     <img src="images/bread_baking_class.jpg" alt="パン教室" loading="lazy">
                 </div>
@@ -353,9 +449,9 @@
                     </div>
                 </div>
             </a>
-            
+
             <!-- 2023年4月3日 -->
-            <a href="blog-20230403.html" class="blog-card reveal-up delay-2">
+            <a href="blog-20230403.html" class="blog-card reveal-up" data-date="20230403">
                 <div class="blog-card-image">
                     <img src="images/hero_smile.png" alt="初ブログ" loading="lazy">
                 </div>
@@ -371,7 +467,7 @@
                     </div>
                 </div>
             </a>
-            
+
         </div>
     </div>
 </section>
@@ -422,5 +518,25 @@
 
 <button class="scroll-top" id="scrollTop" aria-label="ページトップへ">↑</button>
 <script src="main.js"></script>
+<script>
+    function sortBlog(order) {
+        const grid = document.getElementById('blogGrid');
+        const cards = Array.from(grid.querySelectorAll('.blog-card'));
+
+        const pinned = cards.filter(c => c.dataset.pinned === 'true');
+        const normal = cards.filter(c => c.dataset.pinned !== 'true');
+
+        normal.sort((a, b) => {
+            const da = parseInt(a.dataset.date);
+            const db = parseInt(b.dataset.date);
+            return order === 'new' ? db - da : da - db;
+        });
+
+        [...pinned, ...normal].forEach(card => grid.appendChild(card));
+
+        document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(order === 'new' ? 'sortNew' : 'sortOld').classList.add('active');
+    }
+</script>
 </body>
 </html>

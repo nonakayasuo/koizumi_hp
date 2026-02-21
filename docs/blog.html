@@ -251,9 +251,8 @@
 
         <div class="blog-grid" id="blogGrid">
 
-            <!-- ピン留め（常に先頭） -->
-            <a href="blog-20260212.html" class="blog-card blog-card-pinned reveal-up" data-date="20230428" data-pinned="true">
-                <div class="blog-card-pin-badge">📌 ピン留め</div>
+            <!-- 2023年4月28日 -->
+            <a href="blog-20260212.html" class="blog-card reveal-up" data-date="20230428">
                 <div class="blog-card-image">
                     <img src="images/hero_smile.png" alt="選挙が終わって" loading="lazy">
                 </div>
@@ -537,6 +536,8 @@
         document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
         document.getElementById(order === 'new' ? 'sortNew' : 'sortOld').classList.add('active');
     }
+
+    document.addEventListener('DOMContentLoaded', () => sortBlog('new'));
 </script>
 </body>
 </html>

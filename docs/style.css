@@ -557,12 +557,17 @@ a:hover { opacity: .8; }
     inset: 0;
     background-size: cover;
     background-position: center;
-    background-color: #2E7D32;
+    background-color: #1a3a20;
 }
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(27,94,32,.85), rgba(46,125,50,.7));
+    background: linear-gradient(
+        to right,
+        rgba(20,60,25,.92) 0%,
+        rgba(27,80,32,.82) 50%,
+        rgba(15,45,20,.60) 100%
+    );
 }
 .hero-content {
     position: relative;
@@ -591,6 +596,7 @@ a:hover { opacity: .8; }
     line-height: 1.2;
     margin-bottom: 20px;
     letter-spacing: .05em;
+    text-shadow: 0 2px 8px rgba(0,0,0,.35);
 }
 .hero-catchphrase {
     font-size: clamp(18px, 3vw, 26px);
@@ -598,14 +604,35 @@ a:hover { opacity: .8; }
     margin-bottom: 36px;
     opacity: .9;
     line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0,0,0,.25);
 }
 .hero-image {
     flex: 0 0 auto;
     width: 340px;
+    position: relative;
+}
+.hero-image::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    right: -14px;
+    bottom: -14px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 32px;
+    background: rgba(255,255,255,.04);
+    pointer-events: none;
 }
 .hero-image img {
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    box-shadow:
+        0 24px 70px rgba(0,0,0,.55),
+        0 0 0 5px rgba(255,255,255,.50),
+        0 0 0 9px rgba(255,255,255,.12);
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
 }
 
 /* ─── セクション共通 ─────────────────────── */
@@ -1033,7 +1060,8 @@ a:hover { opacity: .8; }
     }
 
     .hero-content { flex-direction: column; text-align: center; padding-top: 120px; }
-    .hero-image { width: 240px; }
+    .hero-image { width: 260px; }
+    .hero-image::before { top: -10px; left: -10px; right: -10px; bottom: -10px; border-radius: 28px; }
     .hero-title { font-size: 36px; }
 
     .two-col { grid-template-columns: 1fr; gap: 40px; }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ページが見つかりません | 小泉しんぺい 公式サイト</title>
+    <link rel="stylesheet" href="/style.css">
+    <script>
+      (function() {
+        var path = location.pathname.replace(/^\//, '').replace(/\/$/, '');
+        var redirect = null;
+        if (!path || path === 'index.html') redirect = '/';
+        else if (path === 'profile' || path === 'profile/') redirect = '/profile.html';
+        else if (path === 'policy' || path === 'policy/') redirect = '/policy.html';
+        else if (path === 'contact' || path === 'contact/') redirect = '/contact.html';
+        else if (path === 'blog' || path === 'blog/') redirect = '/blog.html';
+        else if (/^blog\/(\d{8})$/.test(path)) redirect = '/blog-' + path.replace('blog/', '') + '.html';
+        else if (/^blog-(\d{8})$/.test(path)) redirect = '/' + path + '.html';
+        if (redirect) {
+          location.replace(redirect);
+          return;
+        }
+      })();
+    </script>
+</head>
+<body>
+    <div class="container" style="min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem;">
+        <h1 style="margin-bottom: 1rem;">404</h1>
+        <p style="margin-bottom: 1.5rem;">お探しのページが見つかりませんでした。</p>
+        <a href="/" style="color: var(--primary, #2563eb); text-decoration: underline;">トップページへ戻る</a>
+    </div>
+</body>
+</html>

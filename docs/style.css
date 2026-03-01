@@ -433,6 +433,39 @@ a:hover { opacity: .8; }
     margin: 0;
     background: var(--bg-green-light);
 }
+
+/* スマホ: プレビュー画像＋「PDFを開く」を表示、embedは非表示 */
+.flyer-mobile-preview {
+    display: none;
+    padding: 1rem;
+    text-align: center;
+}
+.flyer-mobile-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+.flyer-btn-open {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: var(--white) !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    transition: background 0.2s;
+}
+.flyer-btn-open:hover {
+    background: var(--primary-dark);
+    opacity: 1;
+}
+
+/* PC: embedを表示、スマホ用プレビューは非表示 */
+.flyer-pc-embed {
+    display: block;
+}
 .flyer-pdf {
     width: 100%;
     height: 520px;
@@ -452,12 +485,28 @@ a:hover { opacity: .8; }
     opacity: 1;
     text-decoration: none;
 }
+
 @media (max-width: 768px) {
     .flyer-embeds {
         grid-template-columns: 1fr;
     }
+    .flyer-mobile-preview {
+        display: block;
+    }
+    .flyer-pc-embed {
+        display: none;
+    }
     .flyer-pdf {
         height: 400px;
+    }
+}
+
+@media (min-width: 769px) {
+    .flyer-mobile-preview {
+        display: none;
+    }
+    .flyer-pc-embed {
+        display: block;
     }
 }
 

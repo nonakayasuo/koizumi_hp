@@ -510,6 +510,77 @@ a:hover { opacity: .8; }
     }
 }
 
+/* ─── チラシページ専用 ───────────────────────── */
+.flyer-page-section {
+    margin-bottom: 3rem;
+}
+.flyer-page-section + .flyer-page-section {
+    padding-top: 3rem;
+    border-top: 2px solid var(--bg-green-light);
+}
+.flyer-page-issue {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    padding-left: 0.75rem;
+    border-left: 4px solid var(--primary);
+}
+
+/* スマホ: プレビュー画像をクリック可能に */
+.flyer-mobile-preview a img {
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+.flyer-mobile-preview a:hover img {
+    border-color: var(--primary);
+    opacity: 1;
+}
+
+/* ─── トップページ チラシ誘導バナー ─────────── */
+.flyer-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem 2rem;
+    margin-top: 1.5rem;
+}
+.flyer-banner-previews {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+}
+.flyer-banner-previews img {
+    width: 50%;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+.flyer-banner-cta {
+    text-align: center;
+    flex-shrink: 0;
+}
+.flyer-banner-cta p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    margin-bottom: 0.75rem;
+}
+@media (max-width: 768px) {
+    .flyer-banner {
+        flex-direction: column;
+        padding: 1.25rem;
+    }
+    .flyer-banner-previews {
+        width: 100%;
+    }
+    .flyer-banner-previews img {
+        width: 50%;
+    }
+}
+
 /* ─── レスポンシブ対応 ──────────────────────── */
 @media (max-width: 768px) {
     .hero-message-title {

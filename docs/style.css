@@ -726,16 +726,16 @@ a:hover { opacity: .8; }
     inset: 0;
     background-size: cover;
     background-position: center;
-    background-color: #1a3a20;
+    background-color: #3d8a47;
 }
 .hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
         to right,
-        rgba(20,60,25,.92) 0%,
-        rgba(27,80,32,.82) 50%,
-        rgba(15,45,20,.60) 100%
+        rgba(40,110,50,.60) 0%,
+        rgba(55,135,65,.48) 50%,
+        rgba(30,85,40,.28) 100%
     );
 }
 .hero-content {
@@ -752,7 +752,7 @@ a:hover { opacity: .8; }
 }
 .hero-text { flex: 1; color: #fff; }
 .hero-label {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     letter-spacing: .2em;
     text-transform: uppercase;
@@ -1228,8 +1228,8 @@ a:hover { opacity: .8; }
         border-top: 1px solid var(--bg-light);
     }
 
-    .hero-content { flex-direction: column; text-align: center; padding-top: 120px; }
-    .hero-image { width: 260px; }
+    .hero-content { flex-direction: column; text-align: center; padding-top: 80px; padding-bottom: 40px; }
+    .hero-image { width: 220px; }
     .hero-image::before { top: -10px; left: -10px; right: -10px; bottom: -10px; border-radius: 28px; }
     .hero-title { font-size: 36px; }
 

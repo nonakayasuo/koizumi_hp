@@ -376,6 +376,35 @@ a:hover { opacity: .8; }
     display: block;
 }
 
+.video-shorts-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.video-shorts-row > .video-card {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 340px;
+}
+
+.video-yt-wrap--short {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #000;
+}
+
+.video-yt-wrap--short iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 .video-card-info {
     padding: 16px 20px;
 }
@@ -410,6 +439,11 @@ a:hover { opacity: .8; }
 .badge-activity {
     background: linear-gradient(135deg, #fff3e0, #ffe0b2);
     color: #e65100;
+}
+
+.badge-short {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #1565c0;
 }
 
 /* ─── 活動チラシ（PDF埋め込み） ───────────────── */

@@ -32,9 +32,15 @@
   </url>
   <url>
     <loc>https://koizumi-shimpei.com/blog.html</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://koizumi-shimpei.com/blog-20260622.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://koizumi-shimpei.com/blog-20260621.html</loc>
